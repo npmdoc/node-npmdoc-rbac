@@ -1,0 +1,461 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/CherryProjects/rbac#readme"
+
+    >rbac (v4.0.2)</a>
+</h1>
+<h4>Hierarchical Role Based Access Control</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.rbac">module rbac</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.rbac.Memory">
+            function <span class="apidocSignatureSpan">rbac.</span>Memory
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.rbac.Mongoose">
+            function <span class="apidocSignatureSpan">rbac.</span>Mongoose
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.rbac.Permission">
+            function <span class="apidocSignatureSpan">rbac.</span>Permission
+            <span class="apidocSignatureSpan">(rbac, action, resource, add, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.rbac.Role">
+            function <span class="apidocSignatureSpan">rbac.</span>Role
+            <span class="apidocSignatureSpan">(rbac, name, add, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.rbac.Storage">
+            function <span class="apidocSignatureSpan">rbac.</span>Storage
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.rbac.default">
+            function <span class="apidocSignatureSpan">rbac.</span>default
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">rbac.</span>express</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.rbac.express">module rbac.express</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.rbac.express.can">
+            function <span class="apidocSignatureSpan">rbac.express.</span>can
+            <span class="apidocSignatureSpan">(rbac, action, resource, redirect, redirectStatus)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.rbac.express.hasRole">
+            function <span class="apidocSignatureSpan">rbac.express.</span>hasRole
+            <span class="apidocSignatureSpan">(rbac, name, redirect, redirectStatus)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.rbac" id="apidoc.module.rbac">module rbac</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.rbac.Memory" id="apidoc.element.rbac.Memory">
+        function <span class="apidocSignatureSpan">rbac.</span>Memory
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Memory() {
+  _classCallCheck(this, Memory);
+
+  var _this = _possibleConstructorReturn(this, (Memory.__proto__ || Object.getPrototypeOf(Memory)).call(this));
+
+  _this._items = {};
+  return _this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.rbac.Mongoose" id="apidoc.element.rbac.Mongoose">
+        function <span class="apidocSignatureSpan">rbac.</span>Mongoose
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function MongooseStorage() {
+  var options = arguments.length &#x3e; 0 &#x26;&#x26; arguments[0] !== undefined ? arguments[0] : {};
+
+  _classCallCheck(this, MongooseStorage);
+
+  var _this = _possibleConstructorReturn(this, (MongooseStorage.__proto__ || Object.getPrototypeOf(MongooseStorage)).call(this));
+
+  var connection = options.connection;
+  if (!connection) {
+    throw new Error(&#x27;Parameter connection is undefined use your current mongoose connection.&#x27;);
+  }
+
+  options.modelName = options.modelName || &#x27;rbac&#x27;;
+  options.Schema = options.Schema || connection.Schema;
+
+  _this._options = options;
+
+  _this._model = connection.model(options.modelName, createSchema(options.Schema));
+  return _this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.rbac.Permission" id="apidoc.element.rbac.Permission">
+        function <span class="apidocSignatureSpan">rbac.</span>Permission
+        <span class="apidocSignatureSpan">(rbac, action, resource, add, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Permission(rbac, action, resource, add, cb) {
+  _classCallCheck(this, Permission);
+
+  if (typeof add === &#x27;function&#x27;) {
+    cb = add;
+    add = true;
+  }
+
+  if (!action || !resource) {
+    var _ret;
+
+    return _ret = cb(new Error(&#x27;One of parameters is undefined&#x27;)), _possibleConstructorReturn(_this, _ret);
+  }
+
+  if (!Permission.isValidName(action) || !Permission.isValidName(resource)) {
+    var _ret2;
+
+    return _ret2 = cb(new Error(&#x27;Action or resource has no valid name&#x27;)), _possibleConstructorReturn(_this, _ret2);
+  }
+
+  return _possibleConstructorReturn(this, (Permission.__proto__ || Object.getPrototypeOf(Permission)).call(this, rbac, Permission
+.createName(action, resource), add, cb));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.rbac.Role" id="apidoc.element.rbac.Role">
+        function <span class="apidocSignatureSpan">rbac.</span>Role
+        <span class="apidocSignatureSpan">(rbac, name, add, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Role(rbac, name, add, cb) {
+  _classCallCheck(this, Role);
+
+  if (typeof add === &#x27;function&#x27;) {
+    cb = add;
+    add = true;
+  }
+
+  if (!_Permission2.default.isValidName(name)) {
+    var _ret;
+
+    return _ret = cb(new Error(&#x27;Role has no valid name&#x27;)), _possibleConstructorReturn(_this, _ret);
+  }
+
+  return _possibleConstructorReturn(this, (Role.__proto__ || Object.getPrototypeOf(Role)).call(this, rbac, name, add, cb));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.rbac.Storage" id="apidoc.element.rbac.Storage">
+        function <span class="apidocSignatureSpan">rbac.</span>Storage
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Storage() {
+  _classCallCheck(this, Storage);
+
+  this._rbac = null;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.rbac.default" id="apidoc.element.rbac.default">
+        function <span class="apidocSignatureSpan">rbac.</span>default
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function RBAC() {
+  var _this = this;
+
+  var options = arguments.length &#x3e; 0 &#x26;&#x26; arguments[0] !== undefined ? arguments[0] : {};
+  var callback = arguments.length &#x3e; 1 &#x26;&#x26; arguments[1] !== undefined ? arguments[1] : function () {};
+
+  _classCallCheck(this, RBAC);
+
+  options.storage = options.storage || new _Memory2.default();
+
+  this._options = options;
+
+  this.storage.rbac = this;
+
+  var permissions = options.permissions || {};
+  var roles = options.roles || [];
+  var grants = options.grants || {};
+
+  this.create(roles, permissions, grants, function (err) {
+    if (err) {
+      return callback(err);
+    }
+
+    return callback(null, _this);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var _this = this;
+
+var options = arguments.length &#x3e; 0 &#x26;&#x26; arguments[0] !== undefined ? arguments[0] : {};
+var callback = arguments.length &#x3e; 1 &#x26;&#x26; arguments[1] !== undefined ? arguments[1] : function () {};
+
+_classCallCheck(this, RBAC);
+
+options.storage = options.storage || new _Memory2.<span class="apidocCodeKeywordSpan">default</span>();
+
+this._options = options;
+
+this.storage.rbac = this;
+
+var permissions = options.permissions || {};
+var roles = options.roles || [];
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.rbac.express" id="apidoc.module.rbac.express">module rbac.express</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.rbac.express.can" id="apidoc.element.rbac.express.can">
+        function <span class="apidocSignatureSpan">rbac.express.</span>can
+        <span class="apidocSignatureSpan">(rbac, action, resource, redirect, redirectStatus)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">can = function (rbac, action, resource, redirect, redirectStatus) {
+  redirectStatus = redirectStatus || 302;
+
+  return function(req, res, next) {
+    if(!req.user) {
+      return next(new WebError(401));
+    }
+
+    req.user.can(rbac, action, resource, function(err, can) {
+      if(err) {
+        return next(err);
+      }
+
+      if(!can) {
+        if(redirect) {
+          return res.redirect(redirectStatus, redirect);
+        }
+
+        return next(new WebError(401));
+      }
+
+      next();
+    });
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+app.use(&#x27;/admin&#x27;, secure.hasRole(rbac, &#x27;admin&#x27;), adminController);
+});
+```
+
+## Check permissions
+
+```js
+rbac.<span class="apidocCodeKeywordSpan">can</span>(&#x27;admin&#x27;, &#x27;create&#x27;, &#x27;article&#x27;, (err, can) =&#x3e
+; {
+if (err) {
+  throw err; // process error
+}
+
+if (can) {
+  console.log(&#x27;Admin is able create article&#x27;);
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.rbac.express.hasRole" id="apidoc.element.rbac.express.hasRole">
+        function <span class="apidocSignatureSpan">rbac.express.</span>hasRole
+        <span class="apidocSignatureSpan">(rbac, name, redirect, redirectStatus)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">hasRole = function (rbac, name, redirect, redirectStatus) {
+  redirectStatus = redirectStatus || 302;
+
+  return function(req, res, next) {
+    if(!req.user) {
+      return next(new WebError(401));
+    }
+
+    req.user.hasRole(rbac, name, function(err, has) {
+      if(err) {
+        return next(err);
+      }
+
+      if(!has) {
+        if(redirect) {
+          return res.redirect(redirectStatus, redirect);
+        }
+
+        return next(new WebError(401));
+      }
+
+      next();
+    });
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+const app = express();
+const rbac = new RBAC({
+  roles: [&#x27;admin&#x27;, &#x27;user&#x27;]
+}, (err, rbac) =&#x3e; {
+  if (err) throw err;
+
+  // setup express routes
+  app.use(&#x27;/admin&#x27;, secure.<span class="apidocCodeKeywordSpan">hasRole</span>(rbac, &#x27;admin&#x27;), adminController
+);
+});
+```
+
+## Check permissions
+
+```js
+rbac.can(&#x27;admin&#x27;, &#x27;create&#x27;, &#x27;article&#x27;, (err, can) =&#x3e; {
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
